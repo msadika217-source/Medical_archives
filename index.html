@@ -15,16 +15,9 @@
         .archive-item { display: none; margin-top: 40px; }
         video { border: 2px solid #494949; border-radius: 10px; }
         
-        /* Certificate */
         #certificate-display { 
             display:none; margin: 50px auto; padding: 40px; border: 10px double #970000; 
             width: 700px; background-color: #fffaf0; font-family: 'Times New Roman', serif; 
-        }
-
-        #music-credit-box a {
-            color: #970000 !important; 
-            text-decoration: underline !important;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -33,20 +26,11 @@
 
     <div style="display: flex; flex-direction: column; align-items: flex-end; width: 95%; margin: 10px auto;">
         <button type="button" onclick="showSources()">Sources</button>
-        <button type="button" onclick="toggleCredits()">Music Credits</button>
-
-        <div id="music-credit-box" style="display:none; background-color: white; border: 2px solid #CC8C97; padding: 15px; border-radius: 10px; margin-top: 10px; font-family: 'Calligraffitti', cursive; font-size: 13px; color: #333; max-width: 400px; text-align: right; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
-            <h3 style="color: #970000; margin-top: 0;">CPR Credits</h3>
-            <p><strong>Music:</strong> Rainy Afternoon by <a href="https://www.youtube.com/@snoozybeats" target="_blank">Snoozy Beats</a></p>
-            <p><strong>License:</strong> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a></p>
-            <p><strong>Source:</strong> <a href="https://www.audiolibrary.com.co/" target="_blank">Audio Library</a></p>
-            <button type="button" onclick="toggleCredits()" style="background-color: #494949; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Close</button>
-        </div>
     </div>
 
     <div class="pencil-logo">✎ Medical archives</div>
     <hr style="width: 80%; border: 0.5px solid #aa4545; margin: 20px auto;">
-    <!-- !!ICONS !!ICONS !!ICONS !!ICONS !!ICONS!! -->
+
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search (e.g. CPR, Heart)...">
         <button type="button" onclick="performSearch()">Search</button>
@@ -55,52 +39,36 @@
     <p>Medicine and Engineering</p>
     <br>
     
-    <h3 style="text-align:left; font-family:Monospace; margin-left: 10%;"> Description of this Website:</h3>
-    <p style="text-align:left; font-family:Monospace; margin-left: 10%;"> This website will allow students and users to learn about certain medical procedures and conditions.</p>
+    <h3> Description of this Website:</h3>
+    <p> This website will allow students and users to learn about certain medical procedures and conditions.</p>
 
-    <hr style="width: 80%; border: 0.5px solid #ddd; margin: 40px auto;">
-
-    <div id="sources" style="display:none; max-width:800px; margin:20px auto; text-align:left; background:#ffffff; padding:16px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
-        <h3 style="margin-top:0; color:#970000;">Sources</h3>
+    <div id="sources" style="display:none; text-align:left; max-width:600px; margin:auto;">
+        <h3 style="color:#970000;">Sources</h3>
         <ul>
-            <li><a href="https://www.mayoclinic.org/first-aid/first-aid-cpr/basics/art-20056600?utm_source=google.com" target="_blank">Mayo Clinic — CPR Guidelines</a></li>
-            <li><a href="https://www.mayoclinic.org/diseases-conditions/stroke/symptoms-causes/syc-20350113" target="_blank">Mayo Clinic — Stroke Information</a></li>
-            <li><a href="https://www.mayoclinic.org/diseases-conditions/seizure/symptoms-causes/syc-20365711?utm_source=google.com" target="_blank">Mayo Clinic — Seizure Information</a></li>
-            <li><a href="https://www.mayoclinic.org/first-aid/first-aid-choking/basics/art-20056637" target="_blank">Mayo Clinic — Choking First Aid</a></li>
-            <li><a href="https://www.verywellhealth.com/heimlich-maneuver-5210124" target="_blank">Verywell Health — Heimlich Maneuver</a></li>
+            <li><a href="https://www.mayoclinic.org/first-aid/first-aid-cpr/basics/art-20056600">Mayo Clinic — CPR</a></li>
+            <li><a href="https://www.mayoclinic.org/diseases-conditions/heart-attack/symptoms-causes/syc-20373106">Mayo Clinic — Heart Attack</a></li>
         </ul>
     </div>
 
     <div id="animation-gallery">
-        <div class="archive-item" data-tags="cpr emergency first aid">
-            <h2 style="font-family: 'Courier New', Courier, monospace;">Medical Archive: CPR Animation</h2>
-            <video width="600" controls loop muted>
-                <source src="static/CPRanimation.mp4" type="video/mp4">
-            </video>
-            <p style="font-family: 'Courier New', Courier, monospace;">Procedure of CPR.</p>
-            <button type="button" onclick="showQuiz()" style="background-color: #494949;">Take the CPR Certification Quiz</button>
+        <div class="archive-item" data-tags="cpr emergency">
+            <h2>Medical Archive: CPR Animation</h2>
+            <video width="600" controls><source src="static/CPRanimation.mp4" type="video/mp4"></video>
+            <p>Procedure of CPR.</p>
+            <button type="button" onclick="showSection('cpr-quiz')" style="background-color: #494949;">Take the CPR Quiz</button>
         </div>
 
-        <div class="archive-item" data-tags="heart attack cardiac chest pain">
-            <h2 style="font-family: 'Courier New', Courier, monospace;">Medical Archive: Heart Attack Animation</h2>
-            <video width="600" controls loop muted>
-                <source src="static/HeartAttack.mp4" type="video/mp4">
-            </video>
-            <p style="font-family: 'Courier New', Courier, monospace;">Heart Attack - Symptons and What to be aware of</p>
-                        <button type="button" onclick="showQuiz()" style="background-color: #494949;">Take the Heart Attack Certification Quiz</button>
-
+        <div class="archive-item" data-tags="heart attack cardiac">
+            <h2>Medical Archive: Heart Attack Animation</h2>
+            <video width="600" controls><source src="static/HeartAttack.mp4" type="video/mp4"></video>
+            <p>Heart Attack - Symptoms</p>
+            <button type="button" onclick="showSection('heart-quiz')" style="background-color: #494949;">Take the Heart Attack Quiz</button>
         </div>
     </div>
 
-    <div id="quiz-section" style="display:none; background: white; padding: 30px; border: 2px solid #CC8C97; border-radius: 15px; max-width: 800px; margin: 40px auto; text-align: left; font-family: Arial, sans-serif;">
-        <h2 style="text-align:center; color: #970000; font-family: 'Calligraffitti';">Assessment Module</h2>
-        <hr>
-        
-        <label><strong>Enter your full name for the certificate:</strong></label><br>
-        <input type="text" id="student-name" style="width: 95%; margin-bottom: 20px;" placeholder="Full Name"><br>
-
-        <div id="quiz-container">
-            <p><strong>1. What is the recommended rate for chest compressions per minute?</strong></p>
+    <div id="cpr-quiz" style="display:none; background: white; padding: 20px; border: 2px solid #CC8C97; max-width: 800px; margin: 20px auto; text-align: left;">
+        <h2>CPR Assessment</h2>
+        <p><strong>1. What is the recommended rate for chest compressions per minute?</strong></p>
             <input type="radio" name="q1" value="0"> 60-80<br>
             <input type="radio" name="q1" value="1"> 100-120<br>
             <input type="radio" name="q1" value="0"> 150-200<br>
@@ -147,97 +115,77 @@
             <input type="radio" name="q10" value="0"> Until the person starts to breathe <br>
             <input type="radio" name="q10" value="1"> Until medical help arrives <br>
             <input type="radio" name="q10" value="0"> For at least 30 minutes <br>
+        <button type="button" onclick="submitCpr()">Submit CPR Quiz</button>
+    </div>
 
-            <br><br>
-            <button type="button" onclick="submitQuiz()" style="width:100%; background-color: #970000;">Submit for Certification</button>
-        </div>
+    <div id="heart-quiz" style="display:none; background: white; padding: 20px; border: 2px solid #CC8C97; max-width: 800px; margin: 20px auto; text-align: left;">
+        <h2>Heart Attack Assessment</h2>
+        <p><strong>1. What is the first step in a heart attack?</strong></p>
+        <input type="radio" name="ha1" value="1"> Call 911 <br>
+        <input type="radio" name="ha1" value="0"> Wait <br>
+        <button type="button" onclick="submitHeart()">Submit Heart Quiz</button>
     </div>
 
     <div id="certificate-display">
-        <h1 style="color: #970000; font-size: 45px;">Certificate of Assessment</h1>
-        <p style="font-size: 20px;">This is to certify that</p>
-        <h2 id="display-name" style="font-size: 35px; text-decoration: underline;">[User Name]</h2>
-        <p style="font-size: 20px;">has successfully passed the</p>
-        <h3>CPR Assessment</h3>
+        <h1>Certificate of Assessment</h1>
+        <h2 id="display-name"></h2>
         <p>Final Score: <span id="final-score"></span>%</p>
-        <br>
-        <div style="margin-top: 30px; border-top: 1px solid black; width: 250px; margin-left: auto; margin-right: auto;">
-            <p><strong>Manha Sadika</strong><br>Developer of Medical Archives</p>
-        </div>
-        <br>
-        <button onclick="window.print()" style="background-color: #494949;">Download</button>
+        <button onclick="window.print()">Download</button>
     </div>
 
     <script>
+        // Simple search
         function performSearch() {
             let input = document.getElementById('search-input').value.toLowerCase();
             let items = document.getElementsByClassName('archive-item');
-            let found = false;
             for (let i = 0; i < items.length; i++) {
                 let tags = items[i].getAttribute('data-tags');
-                if (tags.includes(input) && input !== "") {
-                    items[i].style.display = "block";
-                    found = true;
-                } else {
-                    items[i].style.display = "none";
-                }
-            }
-            if (!found && input !== "") { alert("No matching medical records found."); }
-        }
-
-        function showSources() {
-            const el = document.getElementById('sources');
-            if (el.style.display === 'block') {
-                el.style.display = 'none';
-            } else {
-                el.style.display = 'block';
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                items[i].style.display = (tags.includes(input) && input !== "") ? "block" : "none";
             }
         }
 
-        function toggleCredits() {
-            var x = document.getElementById("music-credit-box");
-            if (x.style.display === "none" || x.style.display === "") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-
-        document.getElementById("search-input").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                performSearch();
-            }
+        // Search on Enter
+        document.getElementById("search-input").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") performSearch();
         });
 
-        function showQuiz() {
-            document.getElementById('quiz-section').style.display = "block";
+        // Show a specific section
+        function showSection(id) {
+            document.getElementById(id).style.display = "block";
             window.scrollTo(0, document.body.scrollHeight);
         }
 
-        function submitQuiz() {
-            let name = document.getElementById('student-name').value;
-            if (name === "") { alert("Please enter your name first!"); return; }
-
-            let score = 0;
-            let totalQuestions = 7; 
-            for (let i = 1; i <= totalQuestions; i++) {
-                let q = document.querySelector('input[name="q' + i + '"]:checked');
-                if (q && q.value === "1") { score++; }
-            }
-
-            let percentage = Math.round((score / totalQuestions) * 100);
-
-            if (percentage >= 70) {
-                document.getElementById('quiz-section').style.display = "none";
-                document.getElementById('animation-gallery').style.display = "none";
-                document.getElementById('certificate-display').style.display = "block";
-                document.getElementById('display-name').innerText = name;
-                document.getElementById('final-score').innerText = percentage;
+        // Submit CPR
+        function submitCpr() {
+            let q1 = document.querySelector('input[name="cpr1"]:checked');
+            if (q1 && q1.value === "1") {
+                showCert("100");
             } else {
-                alert("Score: " + percentage + "%. You need 70% to pass. Review the animation and try again!");
+                alert("Try again!");
             }
+        }
+
+        // Submit Heart
+        function submitHeart() {
+            let q1 = document.querySelector('input[name="ha1"]:checked');
+            if (q1 && q1.value === "1") {
+                showCert("100");
+            } else {
+                alert("Try again!");
+            }
+        }
+
+        function showCert(score) {
+            document.getElementById('cpr-quiz').style.display = "none";
+            document.getElementById('heart-quiz').style.display = "none";
+            document.getElementById('animation-gallery').style.display = "none";
+            document.getElementById('certificate-display').style.display = "block";
+            document.getElementById('final-score').innerText = score;
+        }
+
+        function showSources() {
+            let s = document.getElementById('sources');
+            s.style.display = (s.style.display === 'none') ? 'block' : 'none';
         }
     </script>
 </body>
