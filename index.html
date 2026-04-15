@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Medical Archives</title>
     <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap" rel="stylesheet">
     
     <style>
+        video, img {
+    max-width: 100%;  /* Ensures it never gets wider than the screen */
+    height: auto;     /* Keeps the video from looking squished */
+}
         body { background-color: #f7f7f7; color: #000000; font-family: 'Calligraffitti', sans-serif; text-align: center; }
         .caduceus-logo { color: #970000; font-weight: bold; font-size: 40px; margin-top: 50px; font-family: 'Calligraffitti', cursive; }
         .search-container { margin: 20px auto; max-width: 500px; }
@@ -16,25 +21,231 @@
         video { border: 2px solid #494949; border-radius: 10px; }
         
         #certificate-display { 
-            display:none; margin: 50px auto; padding: 40px; border: 10px double #970000; 
-            width: 700px; background-color: #fffaf0; font-family: 'Times New Roman', serif; 
-        }
+    display: none; 
+    margin: 20px auto; 
+    padding: 20px; 
+    border: 10px double #970000; 
+    width: 90%;          /* Flexible width */
+    max-width: 700px;    /* Maximum size for computers */
+    background-color: #fffaf0; 
+}
 
-        #music-credit-box a {
-            color: #970000 !important; 
-            text-decoration: underline !important;
-            font-weight: bold;
-        }
+.quiz-box {
+    display: none; 
+    background: white; 
+    padding: 20px; 
+    border: 2px solid #CC8C97; 
+    border-radius: 15px; 
+    width: 90%;          /* Flexible width */
+    max-width: 800px;    /* Maximum size for computers */
+    margin: 20px auto; 
+}
 
-        .quiz-box {
-            display:none; background: white; padding: 30px; border: 2px solid #CC8C97; 
-            border-radius: 15px; max-width: 800px; margin: 40px auto; text-align: left; 
-            font-family: Arial, sans-serif;
-        }
     </style>
 </head>
 
 <body>
+
+    <div style="display: flex; flex-direction: column; align-items: flex-end; width: 95%; margin: 10px auto;">
+        <button type="button" onclick="showSources()">Sources</button>
+        <button type="button" onclick="toggleCredits()">Music Credits</button>
+
+        <div id="music-credit-box" style="display:none; background-color: white; border: 2px solid #CC8C97; padding: 15px; border-radius: 10px; margin-top: 10px; font-family: 'Calligraffitti', cursive; font-size: 13px; color: #333; max-width: 400px; text-align: right; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
+            <h3 style="color: #970000; margin-top: 0;">CPR Credits</h3>
+            <p><strong>Music:</strong> Rainy Afternoon by <a href="https://www.youtube.com/@snoozybeats" target="_blank">Snoozy Beats</a></p>
+            <p><strong>License:</strong> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a></p>
+            <p><strong>Source:</strong> <a href="https://www.audiolibrary.com.co/" target="_blank">Audio Library</a></p>
+            <button type="button" onclick="toggleCredits()" style="background-color: #494949; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Close</button>
+        </div>
+    </div>
+
+    <div class="caduceus-logo">✎ Medical archives</div>
+    <hr style="width: 80%; border: 0.5px solid #aa4545; margin: 20px auto;">
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search (e.g. CPR, Heart)...">
+        <button type="button" onclick="performSearch()">Search</button>
+    </div>
+
+    <p>Medicine and Engineering</p>
+    <br>
+    
+    <h3 style="text-align:left; font-family:Monospace; margin-left: 10%;"> Description of this Website:</h3>
+    <p style="text-align:left; font-family:Monospace; margin-left: 10%;"> This website will allow students and users to learn about certain medical procedures and conditions.</p>
+
+    <footer> Note!!! Be sure to call 911 in a real emergency, this is merely to provide educational information.</footer>
+    <hr style="width: 80%; border: 0.5px solid #ddd; margin: 40px auto;">
+
+    <div id="sources" style="display:none; max-width:800px; margin:20px auto; text-align:left; background:#ffffff; padding:16px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+        <h3 style="margin-top:0; color:#970000;">Sources</h3>
+        <ul>
+            <li><a href="https://www.mayoclinic.org/first-aid/first-aid-cpr/basics/art-20056600" target="_blank">Mayo Clinic — CPR Guidelines</a></li>
+            <li><a href="https://www.mayoclinic.org/diseases-conditions/stroke/symptoms-causes/syc-20350113" target="_blank">Mayo Clinic — Stroke Information</a></li>
+            <li><a href="https://www.mayoclinic.org/diseases-conditions/seizure/symptoms-causes/syc-20365711" target="_blank">Mayo Clinic — Seizure Information</a></li>
+            <li><a href="https://www.mayoclinic.org/first-aid/first-aid-choking/basics/art-20056637" target="_blank">Mayo Clinic — Choking First Aid</a></li>
+            <li><a href="https://www.verywellhealth.com/heimlich-maneuver-5210124" target="_blank">Verywell Health — Heimlich Maneuver</a></li>
+        </ul>
+    </div>
+
+    <div id="animation-gallery">
+        <div class="archive-item" data-tags="cpr emergency first aid">
+            <h2>Medical Archive: CPR Animation</h2>
+            <video width="600" controls loop muted><source src="static/CPRanimation.mp4" type="video/mp4"></video>
+            <p>Procedure of CPR.</p>
+            <button type="button" onclick="openQuiz('cpr-quiz-box')" style="background-color: #494949;">Take the CPR Quiz</button>
+        </div>
+
+        <div class="archive-item" data-tags="heart attack cardiac chest pain">
+            <h2>Medical Archive: Heart Attack Animation</h2>
+            <video width="600" controls loop muted><source src="static/HeartAttack.mp4" type="video/mp4"></video>
+            <p>Heart Attack - Symptoms and Awareness</p>
+            <button type="button" onclick="openQuiz('heart-quiz-box')" style="background-color: #494949;">Take the Heart Attack Quiz</button>
+        </div>
+    </div>
+
+    <div id="cpr-quiz-box" class="quiz-box">
+        <h2 style="text-align:center; color: #970000;">CPR Assessment</h2>
+        <input type="text" id="name-cpr" style="width: 95%; margin-bottom: 20px;" placeholder="Full Name for Certificate"><br>
+        
+        <p><strong>1. What is the recommended rate for chest compressions per minute?</strong></p>
+        <input type="radio" name="cpr_q1" value="0"> 60-80<br>
+        <input type="radio" name="cpr_q1" value="1"> 100-120<br>
+        <input type="radio" name="cpr_q1" value="0"> 150-200<br>
+
+        <p><strong>2. Why is early CPR critical in a cardiac emergency?</strong></p>
+        <input type="radio" name="cpr_q2" value="1"> It maintains blood flow to vital organs<br>
+        <input type="radio" name="cpr_q2" value="0"> it's a legal requirement<br>
+        <input type="radio" name="cpr_q2" value="0"> It restarts the heart instantly every time<br>
+
+        <p><strong>3. Why should you perform CPR immediately after a cardiac arrest?</strong></p>
+        <input type="radio" name="cpr_q3" value="1"> Makes sure the blood begins to flow as soon as possible<br>
+        <input type="radio" name="cpr_q3" value="0"> Makes sure they keep their memories<br>
+        <input type="radio" name="cpr_q3" value="0"> Reduces probability of a heart attack<br>
+
+        <p><strong>4. What is the probability of reducing mortality after doing CPR?</strong></p>
+        <input type="radio" name="cpr_q4" value="0"> 50% <br>
+        <input type="radio" name="cpr_q4" value="0"> 75% <br>
+        <input type="radio" name="cpr_q4" value="1"> 80% <br>
+
+        <p><strong>5. What is the first step in CPR?</strong></p>
+        <input type="radio" name="cpr_q5" value="0"> Begin chest compressions <br>
+        <input type="radio" name="cpr_q5" value="0"> Begin to wake up patient <br>
+        <input type="radio" name="cpr_q5" value="1"> Look around surroundings <br>
+
+        <p><strong>6. Is mouth to mouth necessary?</strong></p>
+        <input type="radio" name="cpr_q6" value="0"> True <br>
+        <input type="radio" name="cpr_q6" value="1"> False <br>
+           
+        <p><strong>7. Is CPR the same for everyone?</strong></p>
+        <input type="radio" name="cpr_q7" value="1"> True <br>
+        <input type="radio" name="cpr_q7" value="0"> False <br>
+
+        <p><strong>8. Can anyone perform CPR?</strong></p>
+        <input type="radio" name="cpr_q8" value="1"> True <br>
+        <input type="radio" name="cpr_q8" value="0"> False <br>
+
+        <p><strong>9. What is the primary goal of CPR?</strong></p>
+        <input type="radio" name="cpr_q9" value="0"> To restart the heart instantly <br>
+        <input type="radio" name="cpr_q9" value="1"> To maintain blood flow to vital organs <br>
+        <input type="radio" name="cpr_q9" value="0"> To wake up the patient <br>
+
+        <p><strong>10. How long should you continue CPR?</strong></p>
+        <input type="radio" name="cpr_q10" value="0"> Until the person starts to breathe <br>
+        <input type="radio" name="cpr_q10" value="1"> Until medical help arrives <br>
+        <input type="radio" name="cpr_q10" value="0"> For at least 30 minutes <br>
+
+        <button type="button" onclick="submitCpr()" style="width:100%; background-color: #970000; color: white; margin-top: 20px; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer;">Submit CPR Assessment</button>
+    </div>
+
+    <div id="heart-quiz-box" class="quiz-box">
+        <h2 style="text-align:center; color: #970000;">Heart Attack Assessment</h2>
+        <input type="text" id="name-heart" style="width: 95%; margin-bottom: 20px;" placeholder="Full Name for Certificate"><br>
+
+        <p><strong>1. First step in a suspected heart attack?</strong></p>
+        <input type="radio" name="h_q1" value="1"> Call 911 <br>
+        <input type="radio" name="h_q1" value="0"> Wait for it to pass <br>
+
+        <button type="button" onclick="submitHeart()" style="width:100%; background-color: #970000; color: white; margin-top: 20px; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer;">Submit Heart Attack Assessment</button>
+    </div>
+
+    <div id="certificate-display">
+        <h1 style="color: #970000;">Certificate of Assessment</h1>
+        <p>This is to certify that</p>
+        <h2 id="display-name" style="text-decoration: underline;"></h2>
+        <p>successfully passed the assessment for</p>
+        <h3 id="cert-subject">Medical Archives</h3>
+        <p>Final Score: <span id="final-score"></span>%</p>
+        <br>
+        <p><strong>Manha Sadika</strong><br>Developer of Medical Archives</p>
+        <button onclick="window.print()" style="background-color: #494949; color: white;">Download</button>
+    </div>
+
+    <script>
+        // ENTER KEY FUNCTION
+        document.getElementById("search-input").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") performSearch();
+        });
+
+        function performSearch() {
+            let input = document.getElementById('search-input').value.toLowerCase();
+            let items = document.getElementsByClassName('archive-item');
+            for (let i = 0; i < items.length; i++) {
+                let tags = items[i].getAttribute('data-tags');
+                items[i].style.display = (tags.includes(input) && input !== "") ? "block" : "none";
+            }
+        }
+
+        function openQuiz(id) {
+            document.getElementById(id).style.display = "block";
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function submitCpr() {
+            let name = document.getElementById('name-cpr').value;
+            if (!name) { alert("Please enter your name!"); return; }
+
+            let score = 0;
+            for (let i = 1; i <= 10; i++) {
+                let q = document.querySelector('input[name="cpr_q' + i + '"]:checked');
+                if (q && q.value === "1") { score++; }
+            }
+
+            let pct = Math.round((score / 10) * 100);
+            if (pct >= 70) { showCert(name, "CPR Training", pct); }
+            else { alert("Score: " + pct + "%. You need 70% to pass."); }
+        }
+
+        function submitHeart() {
+            let name = document.getElementById('name-heart').value;
+            let q1 = document.querySelector('input[name="h_q1"]:checked');
+            if (!name) { alert("Please enter your name!"); return; }
+
+            if (q1 && q1.value === "1") { showCert(name, "Heart Attack Response", 100); }
+            else { alert("Incorrect. Please try again."); }
+        }
+
+        function showCert(name, subject, score) {
+            document.getElementById('animation-gallery').style.display = "none";
+            document.getElementById('cpr-quiz-box').style.display = "none";
+            document.getElementById('heart-quiz-box').style.display = "none";
+            document.getElementById('certificate-display').style.display = "block";
+            document.getElementById('display-name').innerText = name;
+            document.getElementById('cert-subject').innerText = subject;
+            document.getElementById('final-score').innerText = score;
+        }
+
+        function showSources() {
+            let s = document.getElementById('sources');
+            s.style.display = (s.style.display === 'none') ? 'block' : 'none';
+        }
+
+        function toggleCredits() {
+            let x = document.getElementById("music-credit-box");
+            x.style.display = (x.style.display === "none") ? "block" : "none";
+        }
+    </script>
+</body>
+</html><body>
 
     <div style="display: flex; flex-direction: column; align-items: flex-end; width: 95%; margin: 10px auto;">
         <button type="button" onclick="showSources()">Sources</button>
