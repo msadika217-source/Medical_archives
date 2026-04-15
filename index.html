@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Medical Archives</title>
     <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap" rel="stylesheet">
     
     <style>
+       video {
+    width: 100%;       /* Fills the container width */
+    max-width: 600px;  /* Stops it from getting too huge on desktop */
+    height: auto;      /* Keeps the original shape */
+}     /* Keeps the video from looking squished */
+
         body { background-color: #f7f7f7; color: #000000; font-family: 'Calligraffitti', sans-serif; text-align: center; }
         .pencil-logo { color: #970000; font-weight: bold; font-size: 40px; margin-top: 50px; font-family: 'Calligraffitti', cursive; }
         .search-container { margin: 20px auto; max-width: 500px; }
@@ -16,21 +23,42 @@
         video { border: 2px solid #494949; border-radius: 10px; }
         
         #certificate-display { 
-            display:none; margin: 50px auto; padding: 40px; border: 10px double #970000; 
-            width: 700px; background-color: #fffaf0; font-family: 'Times New Roman', serif; 
-        }
+    display: none; 
+    margin: 20px auto; 
+    padding: 20px; 
+    border: 10px double #970000; 
+    width: 90%;          /* Flexible width */
+    max-width: 700px;    /* Maximum size for computers */
+    background-color: #fffaf0; 
+}
 
-        #music-credit-box a {
-            color: #970000 !important; 
-            text-decoration: underline !important;
-            font-weight: bold;
-        }
+.quiz-box {
+    display: none; 
+    background: white; 
+    padding: 20px; 
+    border: 2px solid #CC8C97; 
+    border-radius: 15px; 
+    width: 90%;          /* Flexible width */
+    max-width: 800px;    /* Maximum size for computers */
+    margin: 20px auto; 
+}
 
-        .quiz-box {
-            display:none; background: white; padding: 30px; border: 2px solid #CC8C97; 
-            border-radius: 15px; max-width: 800px; margin: 40px auto; text-align: left; 
-            font-family: Arial, sans-serif;
-        }
+
+@media (max-width: 600px) {
+    /* 1. Make the logo a bit smaller so it fits */
+    .pencil-logo { font-size: 28px; }
+
+    /* 2. Stack the search bar and button vertically */
+    .search-container input { width: 90%; margin-bottom: 10px; }
+    .search-container button { width: 90%; }
+
+    /* 3. Make buttons easier to tap with a thumb */
+    button { padding: 15px; font-size: 16px; width: 95%; }
+
+    /* 4. Reduce margins so you have more room for text */
+    .quiz-box { padding: 15px; width: 95%; }
+}
+
     </style>
 </head>
 
@@ -236,6 +264,3 @@
     </script>
 </body>
 </html>
-
-
-
