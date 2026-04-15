@@ -46,7 +46,7 @@
 
     <div class="pencil-logo">✎ Medical archives</div>
     <hr style="width: 80%; border: 0.5px solid #aa4545; margin: 20px auto;">
-    
+    <!-- !!ICONS !!ICONS !!ICONS !!ICONS !!ICONS!! -->
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search (e.g. CPR, Heart)...">
         <button type="button" onclick="performSearch()">Search</button>
@@ -86,7 +86,9 @@
             <video width="600" controls loop muted>
                 <source src="static/HeartAttack.mp4" type="video/mp4">
             </video>
-            <p style="font-family: 'Courier New', Courier, monospace;">Physiology of a myocardial infarction.</p>
+            <p style="font-family: 'Courier New', Courier, monospace;">Heart Attack - Symptons and What to be aware of</p>
+                        <button type="button" onclick="showQuiz()" style="background-color: #494949;">Take the Heart Attack Certification Quiz</button>
+
         </div>
     </div>
 
@@ -113,13 +115,46 @@
             <input type="radio" name="q3" value="0"> Makes sure they keep their memories<br>
             <input type="radio" name="q3" value="0"> Reduces probability of a heart attack<br>
 
+            <p><strong>4. What is the probability of reducing mortality after doing CPR?</strong></p>
+            <input type="radio" name="q4" value="0"> 50% <br>
+            <input type="radio" name="q4" value="0"> 75% <br>
+            <input type="radio" name="q4" value="1"> 80% <br>
+
+            <p><strong>5. What is the first step in CPR?</strong></p>
+            <input type="radio" name="q5" value="0"> Begin chest compressions <br>
+            <input type="radio" name="q5" value="0"> Begin to wake up paitent <br>
+            <input type="radio" name="q5" value="1"> Look around surroundings <br>
+
+            <p><strong>6. Is mouth to mouth necessary?</strong></p>
+            <input type="radio" name="q6" value="0"> True <br>
+            <input type="radio" name="q6" value="1"> False <br>
+           
+            <p><strong>7. Is CPR the same for everyone?</strong></p>
+            <input type="radio" name="q7" value="1"> True <br>
+            <input type="radio" name="q7" value="0"> False <br>
+
+
+            <p><strong>8. Can anyone perform CPR?</strong></p>
+            <input type="radio" name="q8" value="1"> True <br>
+            <input type="radio" name="q8" value="0"> False <br
+
+            <p><strong>9. What is the primary goal of CPR?</strong></p>
+            <input type="radio" name="q9" value="1"> To restart the heart instantly <br>
+            <input type="radio" name="q9" value="0"> To maintain blood flow to vital organs <br>
+            <input type="radio" name="q9" value="0"> To wake up the patient <br>
+
+            <p><strong>10. How long should you continue CPR?</strong></p>
+            <input type="radio" name="q10" value="0"> Until the person starts to breathe <br>
+            <input type="radio" name="q10" value="1"> Until medical help arrives <br>
+            <input type="radio" name="q10" value="0"> For at least 30 minutes <br>
+
             <br><br>
             <button type="button" onclick="submitQuiz()" style="width:100%; background-color: #970000;">Submit for Certification</button>
         </div>
     </div>
 
     <div id="certificate-display">
-        <h1 style="color: #970000; font-size: 45px;">CERTIFICATE OF COMPLETION</h1>
+        <h1 style="color: #970000; font-size: 45px;">Certificate of Assessment</h1>
         <p style="font-size: 20px;">This is to certify that</p>
         <h2 id="display-name" style="font-size: 35px; text-decoration: underline;">[User Name]</h2>
         <p style="font-size: 20px;">has successfully passed the</p>
@@ -127,10 +162,10 @@
         <p>Final Score: <span id="final-score"></span>%</p>
         <br>
         <div style="margin-top: 30px; border-top: 1px solid black; width: 250px; margin-left: auto; margin-right: auto;">
-            <p><strong>Manha Sadika</strong><br>Lead Developer, Medical Archives</p>
+            <p><strong>Manha Sadika</strong><br>Developer of Medical Archives</p>
         </div>
         <br>
-        <button onclick="window.print()" style="background-color: #494949;">Download/Print PDF</button>
+        <button onclick="window.print()" style="background-color: #494949;">Download</button>
     </div>
 
     <script>
@@ -186,7 +221,7 @@
             if (name === "") { alert("Please enter your name first!"); return; }
 
             let score = 0;
-            let totalQuestions = 3; 
+            let totalQuestions = 7; 
             for (let i = 1; i <= totalQuestions; i++) {
                 let q = document.querySelector('input[name="q' + i + '"]:checked');
                 if (q && q.value === "1") { score++; }
@@ -194,14 +229,14 @@
 
             let percentage = Math.round((score / totalQuestions) * 100);
 
-            if (percentage >= 30) {
+            if (percentage >= 70) {
                 document.getElementById('quiz-section').style.display = "none";
                 document.getElementById('animation-gallery').style.display = "none";
                 document.getElementById('certificate-display').style.display = "block";
                 document.getElementById('display-name').innerText = name;
                 document.getElementById('final-score').innerText = percentage;
             } else {
-                alert("Score: " + percentage + "%. You need 30% to pass. Review the animation and try again!");
+                alert("Score: " + percentage + "%. You need 70% to pass. Review the animation and try again!");
             }
         }
     </script>
