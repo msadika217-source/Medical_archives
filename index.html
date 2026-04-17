@@ -151,6 +151,28 @@
             <p>Heart Attack - Symptoms and Awareness</p>
             <button type="button" onclick="openQuiz('heart-quiz-box')" style="background-color: #494949;">Take the Heart Attack Quiz</button>
         </div>
+
+        <div class="archive-item" data-tags="Stroke stroke symptoms FAST">
+            <h2>Medical Archive: Stroke Animation</h2>
+            <video width="600" controls loop muted><source src="static/Stroke+Animation.mp4" type="video/mp4"></video>
+            <p>Stroke - Symptoms and Awareness</p>
+            <button type="button" onclick="openQuiz('stroke-quiz-box')" style="background-color: #494949;">Take the Stroke Quiz</button>
+        </div>
+
+        <div class="archive-item" data-tags="Seizure seizure symptoms">
+            <h2>Medical Archive: Seizure Animation</h2>
+            <video width="600" controls loop muted><source src="static/Seizure+Animation.mp4" type="video/mp4"></video>
+            <p>Seizure - Symptoms and Awareness</p>
+            <button type="button" onclick="openQuiz('seizure-quiz-box')" style="background-color: #494949;">Take the Seizure Quiz</button>
+        </div>
+
+         <div class="archive-item" data-tags="Hiemlich heimlich choking">
+             <h2>Medical Archive: Heimlich Maneuver Animation</h2>
+            <h2>Medical Archive: Hiemlich Manuever Animation</h2>
+            <video width="600" controls loop muted><source src="static/Hiemlech+Manuever.mp4" type="video/mp4"></video>
+            <p>Seizure - Symptoms and Awareness</p>
+            <button type="button" onclick="openQuiz('seizure-quiz-box')" style="background-color: #494949;">Take the Seizure Quiz</button>
+        </div>
     </div>
 
     <div id="cpr-quiz-box" class="quiz-box">
@@ -215,6 +237,38 @@
         <input type="radio" name="h_q1" value="1"> Call 911 <br>
         <input type="radio" name="h_q1" value="0"> Wait for it to pass <br>
 
+        <p>2. True or False: Heart attack symptoms can feel like indigestion.</p>
+    <input type="radio" name="h2" value="1"> True <br>
+    <input type="radio" name="h2" value="0"> False <br>
+
+    <p>3. Where might pain spread during a heart attack?</p>
+    <input type="radio" name="h3" value="1"> Left arm, neck, or jaw <br>
+    <input type="radio" name="h3" value="0"> To the knees and feet <br>
+
+    <p>4. What is the first thing you should do if someone collapses?</p>
+    <input type="radio" name="h4" value="1"> Call 911 immediately <br>
+    <input type="radio" name="h4" value="0"> Wait for them to wake up <br>
+
+    <p>5. Why is Aspirin often recommended?</p>
+    <input type="radio" name="h5" value="1"> It helps thin the blood <br>
+    <input type="radio" name="h5" value="0"> It stops the person from coughing <br>
+
+    <p>6. Do women always experience the same symptoms as men?</p>
+    <input type="radio" name="h6" value="1"> No, they often feel nausea or back pain <br>
+    <input type="radio" name="h6" value="0"> Yes, the symptoms are always identical <br>
+
+    <p>7. What is the purpose of an AED?</p>
+    <input type="radio" name="h7" value="1"> To restart the heart with a shock <br>
+    <input type="radio" name="h7" value="0"> To check the person's temperature <br>
+
+    <p>8. What should you do if the person stops breathing?</p>
+    <input type="radio" name="h8" value="1"> Begin CPR immediately <br>
+    <input type="radio" name="h8" value="0"> Give them water <br>
+
+    <p>9. Should you drive yourself to the hospital during a heart attack?</p>
+    <input type="radio" name="h9" value="1"> No, call an ambulance <br>
+    <input type="radio" name="h9" value="0"> Yes, it is faster <br>
+
         <button type="button" onclick="submitHeart()" style="width:100%; background-color: #970000; color: white; margin-top: 20px; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer;">Submit Heart Attack Assessment</button>
     </div>
 
@@ -237,6 +291,43 @@
         <input type="radio" name="seizure_q1" value="1">Check if the person is muted <br>
         <input type="radio" name="seizure_q1" value="0"> Pray <br>
 
+        <p>2. What is the primary goal of seizure first aid?</p>
+        <input type="radio" name="s1" value="1"> Keeping the person safe from injury <br>
+        <input type="radio" name="s1" value="0"> Stopping the shaking manually <br>
+
+    <p>3. Should you restrain someone having a seizure?</p>
+    <input type="radio" name="s2" value="1"> No, it can cause injury <br>
+    <input type="radio" name="s2" value="0"> Yes, to keep them still <br>
+
+    <p>4. What is the "Recovery Position"?</p>
+    <input type="radio" name="s3" value="1"> Rolling them onto their side <br>
+    <input type="radio" name="s3" value="0"> Holding them upright <br>
+
+    <p>5. Why should you cushion the head?</p>
+    <input type="radio" name="s4" value="1"> To prevent trauma from the ground <br>
+    <input type="radio" name="s4" value="0"> To help them fall asleep <br>
+
+    <p>6. After how many minutes of seizing MUST you call 911?</p>
+    <input type="radio" name="s5" value="1"> 5 minutes <br>
+    <input type="radio" name="s5" value="0"> 20 minutes <br>
+
+    <p>7. What should you put in their mouth?</p>
+    <input type="radio" name="s6" value="1"> Nothing (it is dangerous) <br>
+    <input type="radio" name="s6" value="0"> A spoon or wallet <br>
+
+    <p>8. Are people usually conscious during a grand mal seizure?</p>
+    <input type="radio" name="s7" value="1"> No <br>
+    <input type="radio" name="s7" value="0"> Yes <br>
+
+    <p>9. What should you do once the shaking stops?</p>
+    <input type="radio" name="s8" value="1"> Check breathing and stay with them <br>
+    <input type="radio" name="s8" value="0"> Leave them to rest alone <br>
+
+    <p>10. Is confusion normal after a seizure?</p>
+    <input type="radio" name="s9" value="1"> Yes, it is the post-ictal state <br>
+    <input type="radio" name="s9" value="0"> No, it means they are dreaming <br>
+</div>
+
         <button type="button" onclick="submitSeizure()" style="width:100%; background-color: #970000; color: white; margin-top: 20px; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer;">Submit Seizure Assessment</button>
     </div>
 
@@ -247,6 +338,44 @@
         <p><strong>1.Acronym to check if it is a stroke?</strong></p>
         <input type="radio" name="stroke_q1" value="1"> F.A.S.T <br>
         <input type="radio" name="stroke_q1" value="0"> S.T.R.O.K.E <br>
+
+        <p><strong>2</strong>2. In F.A.S.T., what does the 'F' stand for?</strong></p>
+    <input type="radio" name="st1" value="1"> Face Drooping <br>
+    <input type="radio" name="st1" value="0"> Fast Heartbeat <br>
+
+    <p><strong>3. What does the 'A' stand for?</strong></p>
+    <input type="radio" name="st2" value="1"> Arm Weakness <br>
+    <input type="radio" name="st2" value="0"> Airway Blockage <br>
+
+    <p><strong>4. What does the 'S' stand for?</strong></p>
+    <input type="radio" name="st3" value="1"> Speech Difficulty <br>
+    <input type="radio" name="st3" value="0"> Sudden Shaking <br>
+
+    <p><strong>5. What does the 'T' stand for?</strong></p>
+    <input type="radio" name="st4" value="1"> Time to call 911 <br>
+    <input type="radio" name="st4" value="0"> Temperature check <br>
+
+    <p><strong>6. Why is a stroke called a "Brain Attack"?</strong></p>
+    <input type="radio" name="st5" value="1"> Blood flow to the brain is cut off <br>
+    <input type="radio" name="st5" value="0"> The brain is over-oxygenated <br>
+
+    <p><strong>7. If symptoms go away quickly, do you still need a doctor?</strong></p>
+    <input type="radio" name="st6" value="1"> Yes, it could be a warning stroke (TIA) <br>
+    <input type="radio" name="st6" value="0"> No, it was just a glitch <br>
+
+    <p><strong>8. Can a stroke cause sudden vision loss?</strong></p>
+    <input type="radio" name="st7" value="1"> Yes <br>
+    <input type="radio" name="st7" value="0"> No <br>
+
+    <p><strong>9. Should you give a stroke victim food or water?</strong></p>
+    <input type="radio" name="st8" value="1"> No, they may have trouble swallowing <br>
+    <input type="radio" name="st8" value="0"> Yes, to keep them hydrated <br>
+
+    <p><strong>10. Which law protects you when you try to help?</strong></p>
+    <input type="radio" name="st9" value="1"> Good Samaritan Law <br>
+    <input type="radio" name="st9" value="0"> The Medical Privacy Act <br>
+
+       
 
         <button type="button" onclick="submitStroke()" style="width:100%; background-color: #970000; color: white; margin-top: 20px; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer;">Submit Stroke Assessment</button>
     </div>
